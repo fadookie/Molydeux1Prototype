@@ -5,7 +5,7 @@ color npcColor = color(255, 255, 255);
 float cryIncreaseRate = 0.03;//In tears per second
 float cryDecreaseRate = 0.01;//Sadness entropy in tears per second
 float maxCryRate = 5; //tps
-float npcInfluenceRadius = 100;
+float npcInfluenceRadius = 150;
 boolean npcWiggle = true;
 
 static final boolean DEBUG = true;
