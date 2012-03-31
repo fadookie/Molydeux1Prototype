@@ -2,6 +2,9 @@ class NPCController extends CharacterController {
   float cryRate = 0.001;
   Sphere influence;
   HashSet<CharacterController> influencers;
+  PVector velocity;
+  float wiggleIntervalMs = 1000;
+  float lastWiggleMs = 0;
   
   NPCController() {
     super();
@@ -11,6 +14,7 @@ class NPCController extends CharacterController {
   void construct() {
     myColor = npcColor;
     influence = new Sphere();
+    velocity = new PVector();
     influence.position = sphere.position; //Assign by reference so it keeps up to date.
     influence.radius = npcInfluenceRadius;
     cryInfluenceRate = cryIncreaseRate;
@@ -44,6 +48,17 @@ class NPCController extends CharacterController {
     cryRate = constrain(cryRate, 0.001, maxCryRate);
     //println("cryRate: " + cryRate + " influencers: " + influencers);
     myColor = color((1/cryRate) * 200, (1/cryRate) * 200, 255);
+    
+    if (npcWiggle
+        && ((millis() - lastWiggleMs) > wiggleIntervalMs)
+    ) {
+      velocity.x = random(-0.5, 0.5);
+      velocity.y = random(-0.5, 0.5);
+      wiggleIntervalMs = random (500, 2000);
+      lastWiggleMs = millis();
+    }
+    
+    sphere.position.add(velocity);
   }
   
   void draw() {
