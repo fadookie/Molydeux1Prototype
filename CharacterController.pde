@@ -1,6 +1,9 @@
 class CharacterController {
   color myColor;
   Sphere sphere;
+  String tag = "";
+  
+  float cryInfluenceRate = 0;
   
   CharacterController() {
     myColor = color(0,0,0);
@@ -12,6 +15,6 @@ class CharacterController {
     stroke(myColor);
     fill(myColor);
     sphere.draw();
-    pushStyle();
+    popStyle();
   }
 }
