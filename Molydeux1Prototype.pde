@@ -1,7 +1,9 @@
 PlayerController player;
 ArrayList<NPCController> npcs;
-color playerColor = color(0,0,200);
-color npcColor = color(200, 0, 0);
+color playerColor = color(0,200,0);
+color npcColor = color(255, 255, 255);
+float cryIncreaseRate = 0.03;//In tears per second
+float maxCryRate = 5; //tps
 
 void setup() {
   size(800, 600);
@@ -10,8 +12,8 @@ void setup() {
   npcs = new ArrayList<NPCController>();
   for (int i = 0; i<10; i++) {
     NPCController npc = new NPCController();
-    npc.position.x = random(0, width);
-    npc.position.y = random(0, height);
+    npc.sphere.position.x = random(0, width);
+    npc.sphere.position.y = random(0, height);
     npcs.add(npc);
   }
   

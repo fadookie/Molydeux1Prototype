@@ -4,7 +4,7 @@ class PlayerController extends CharacterController {
     myColor = playerColor;
   }
   void update(int x, int y) {
-    position.x = x;
-    position.y = y;
+    sphere.position.x = x;
+    sphere.position.y = y;
   }
 }

@@ -1,4 +1,6 @@
 class NPCController extends CharacterController {
+  float cryRate = 0.001;
+  
   NPCController() {
     super();
     construct();
@@ -9,10 +11,13 @@ class NPCController extends CharacterController {
   }
   
   void update() {
-    if (this.collidesWith(player)) {
-      myColor = color(0, 255, 0);
+    if (sphere.collidesWith(player.sphere)) {
+      cryRate += cryIncreaseRate;
+      //println("cryRate: " + cryRate);
     } else {
-      myColor = npcColor;
+      cryRate -= cryIncreaseRate;
     }
+    cryRate = constrain(cryRate, 0.001, maxCryRate);
+    myColor = color((1/cryRate) * 200, (1/cryRate) * 200, 255);
   }
 }
