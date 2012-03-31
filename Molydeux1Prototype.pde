@@ -15,7 +15,7 @@ void setup() {
     npcs.add(npc);
   }
   
-  ellipseMode(CENTER);
+  ellipseMode(RADIUS);
 }
 
 //------------------------------
@@ -23,6 +23,7 @@ void draw() {
   background(66);
   
   for (NPCController npc : npcs) {
+    npc.update();
     npc.draw();
   }
   
